@@ -1,4 +1,4 @@
-<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee()">
     <div>
         <div>
             <h3>Create Employee</h3>
@@ -13,7 +13,7 @@
                         <label for="fullName">Full Name</label>
                     </td>
                     <td>
-                        <input id="fullName" name="fullName" [(ngModel)]="fullName" type="text" />
+                        <input id="fullName" name="fullName" [(ngModel)]="employee.name" type="text" />
                     </td>
                 </tr>
                 <tr>
@@ -21,7 +21,7 @@
                         <label for="email">Email</label>
                     </td>
                     <td>
-                        <input id="email" name="email" [(ngModel)]="email" type="text" />
+                        <input id="email" name="email" [(ngModel)]="employee.email" type="text" />
                     </td>
                 </tr>
                 <tr>
@@ -29,7 +29,7 @@
                         <label for="phoneNumber">Phone Number</label>
                     </td>
                     <td>
-                        <input id="phoneNumber" name="phoneNumber" [(ngModel)]="phoneNumber" type="text" />
+                        <input id="phoneNumber" name="phoneNumber" [(ngModel)]="employee.phoneNumber" type="text" />
                     </td>
                 </tr>
                 <tr>
@@ -38,14 +38,14 @@
                     </td>
                     <td>
                         <label>
-                            <input type="radio" value="email" name="contactPref" [(ngModel)]="contactPref" />
+                            <input type="radio" value="email" name="contactPref" [(ngModel)]="employee.contactPrefernce" />
                             Email
                         </label>
 
                     </td>
                     <td>
                         <label>
-                            <input type="radio" value="phone" name="contactPref" [(ngModel)]="contactPref" /> Phone
+                            <input type="radio" value="phone" name="contactPref" [(ngModel)]="employee.contactPrefernce" /> Phone
                         </label>
                     </td>
                 </tr>
@@ -54,10 +54,10 @@
                         <label for="Gender">Gender</label>
                     </td>
                     <td>
-                        <input type="radio" value="male" name="gender" [(ngModel)]="gender" />
+                        <input type="radio" value="male" name="gender" [(ngModel)]="employee.gander" />
                     </td>
                     <td>
-                        <input type="radio" value="female" name="gender" [(ngModel)]="gender" />
+                        <input type="radio" value="female" name="gender" [(ngModel)]="employee.gander" />
                     </td>
                 </tr>
                 <tr>
@@ -65,7 +65,7 @@
                         <label>Is Active</label>
                     </td>
                     <td>
-                        <input type="checkbox" name="isActive" [(ngModel)]="isAcive">
+                        <input type="checkbox" name="isActive" [(ngModel)]="employee.isActive">
                     </td>
                 </tr>
                 <tr>
@@ -73,12 +73,20 @@
                         <label for="department">Department</label>
                     </td>
                     <td>
-                        <select id="department" name="department" [(ngModel)]="department">
-                            <option *ngFor="let val of dep" [value]="val.id">
+                        <select id="department" name="department" [(ngModel)]="employee.department">
+                            <option *ngFor="let val of dep" [ngValue]="val">
                                 {{val.value}}
                             </option>
 
                         </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="dateOfBirth">Date Of Birth</label>
+                    </td>
+                    <td>
+                        <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="employee.dateOfBirth" type="date" />
                     </td>
                 </tr>
             </table>
