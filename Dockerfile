@@ -6,4 +6,4 @@ RUN npm install
 RUN npm run build --prod
 
 FROM nginx as runtime
-COPY --from=build /app/dist/ANGULAR8FIRSTAPP /usr/share/nginx/html
+COPY --from=build /app/dist/angular8firstapp /usr/share/nginx/html
