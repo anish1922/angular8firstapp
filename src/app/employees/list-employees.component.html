@@ -1,4 +1,10 @@
-<div clas="panel panel-primary" *ngFor="let employee of employees">
-    <app-display-employee [employee]="employee"></app-display-employee>
-    
+
+<div>
+    <input type="text" [(ngModel)]="searchText" placeholder="search by name" />
+</div>
+<h3>{{childData}}</h3>
+<div clas="panel panel-primary" *ngFor="let employee of employees | employeeFiler:searchText">
+    <div (click)="onClick(employee.id)">
+        <app-display-employee [employee]="employee" (notify)="handleEvent($event)"></app-display-employee>
+    </div>
 </div>
