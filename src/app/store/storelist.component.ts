@@ -7,10 +7,13 @@ import { Product } from '../models/product.model'
   styleUrls: ['./storelist.component.css']
 })
 export class StorelistComponent implements OnInit {
-
+  public selectedCat = null;
+  public productPerPage = 4;
+  public selectedPage = 1;
   constructor(private _productRepo: ProductRepo) { }
   get products(): Product[] {
-    return this._productRepo.getProducts();
+    let pageIndex = (this.selectedPage - 1) * this.productPerPage;
+    return this._productRepo.getProducts(this.selectedCat).slice(pageIndex, pageIndex + this.productPerPage);
   }
   get categories(): string[] {
     return this._productRepo.getCategories();
@@ -18,4 +21,22 @@ export class StorelistComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changeCategory(cat?: string) {
+    this.selectedCat = cat;
+  }
+  changePage(newPage: number) {
+    this.selectedPage = newPage;
+  }
+  changePageSize(newPageSize: number) {
+    this.productPerPage = Number(newPageSize);
+  }
+
+  get pageNumbers(): number[] {
+    return Array(Math.ceil(this._productRepo.
+      getProducts(this.selectedCat).length / this.productPerPage)).fill(0).map((x,i)=>i+1);
+  }
+  get pageCount(): number {
+    return Math.ceil(this._productRepo
+        .getProducts(this.selectedCat).length / this.productPerPage)
+}
 }

@@ -12,7 +12,6 @@ import { EmployeeDetailsComponent } from './employees/employee-details.component
 import { TempComponent } from './employees/temp.component'
 import { EmployeeFileter } from './employees/employees-filter.pipe';
 import { ListUsersComponent } from './users/list-users.component';
-import { StorelistComponent } from './store/storelist.component';
 import { StoreModule } from './store/store.module';
 @NgModule({
   declarations: [
