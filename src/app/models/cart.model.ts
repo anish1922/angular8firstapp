@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { CartLine } from './cartline.model'
 import { Product } from './product.model';
 
 @Injectable()
@@ -7,7 +6,7 @@ export class Cart {
     public lines: CartLine[] = [];
     public itemCount: number;
     public cartPrice: number;
-
+    constructor() {}
     addLine(product: Product, quantity: number = 1) {
         let line = this.lines.find(x => x.product.id == product.id);
         if (line != undefined) {
@@ -47,6 +46,15 @@ export class Cart {
         }
         this.reCalculate();
     }
-    constructor(public product: Product,
-        public quantity: number) {}
+    
+}
+
+class CartLine {
+    constructor(public product:Product,public quintity:number) {
+        
+    }
+    get lineTotal()
+    {
+        return this.quintity*this.product.price;
+    }
 }

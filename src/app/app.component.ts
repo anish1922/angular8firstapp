@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {Model, ToDoItem} from '../app/models/model'
 @Component({
   selector: 'app-root',
-  template:"<app-storelist></app-storelist>"
+  templateUrl:"./app.component.html"
 })
 export class AppComponent {
   title = 'angular8firstapp';

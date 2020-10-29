@@ -8,4 +8,5 @@ export class CartLine {
     {
         return this.quintity*this.product.price;
     }
+    
 }
