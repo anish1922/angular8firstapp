@@ -13,6 +13,7 @@ import { TempComponent } from './employees/temp.component'
 import { EmployeeFileter } from './employees/employees-filter.pipe';
 import { ListUsersComponent } from './users/list-users.component';
 import { StoreModule } from './store/store.module';
+
 @NgModule({
   declarations: [
     AppComponent,

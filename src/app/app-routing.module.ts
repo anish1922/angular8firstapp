@@ -11,15 +11,20 @@ import { StoreFirstGuard } from './store/store-first.guard';
 import { StorelistComponent } from './store/storelist.component';
 import { ListUsersComponent } from './users/list-users.component';
 const routes: Routes = [
-  { path: "store", component: StorelistComponent,canActivate:[StoreFirstGuard] },
-  { path: "cart", component: CartDetailComponent,canActivate:[StoreFirstGuard]  },
-  { path: "checkout", component: CheckoutComponent,canActivate:[StoreFirstGuard]},
+  { path: "store", component: StorelistComponent, canActivate: [StoreFirstGuard] },
+  { path: "cart", component: CartDetailComponent, canActivate: [StoreFirstGuard] },
+  { path: "checkout", component: CheckoutComponent, canActivate: [StoreFirstGuard] },
+  {
+    path: "admin",
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canActivate: [StoreFirstGuard]
+  },
   { path: "**", redirectTo: '/store' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers:[StoreFirstGuard]
+  providers: [StoreFirstGuard]
 })
 export class AppRoutingModule { }
