@@ -19,7 +19,7 @@ export class RestDataSource {
         return this._restClient.get<Product[]>(this.baseUrl + "products", this.getOptions());
     }
     saveOrder(order: Order): Observable<Order> {
-        return this._restClient.post<Order>(this.baseUrl + "order", order, this.getOptions());
+        return this._restClient.post<Order>(this.baseUrl + "orders", order, this.getOptions());
     }
 
     authenticate(user: string, pass: string): Observable<boolean> {

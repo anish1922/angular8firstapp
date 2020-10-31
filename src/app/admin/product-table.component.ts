@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../models/product.model';
+import { ProductRepo } from '../models/productrepo';
 
 @Component({
   selector: 'app-product-table',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productRepo: ProductRepo) { }
 
   ngOnInit(): void {
+  }
+
+  getProducts(): Product[] {
+    return this.productRepo.getProducts();
+  }
+  deleteProduct(id: number) {
+    this.deleteProduct(id);
   }
 
 }

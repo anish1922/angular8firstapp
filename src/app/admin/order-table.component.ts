@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from '../models/order.model';
+import { OrderRepository } from '../models/orderRepo';
 
 @Component({
   selector: 'app-order-table',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderTableComponent implements OnInit {
 
-  constructor() { }
+  includeShipped = false;
+  constructor(private repository: OrderRepository) {
 
+  }
   ngOnInit(): void {
   }
-
+  getOrders(): Order[] {
+    return this.repository.getOrders()
+      .filter(o => this.includeShipped || !o.shipped);
+  }
+  delete(id: number) {
+    this.repository.deleteOrder(id);
+  }
+  markShipped(order: Order) {
+    order.shipped = true;
+    this.repository.updateOrder(order);
+  }
 }
